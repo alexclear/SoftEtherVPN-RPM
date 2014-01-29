@@ -28,7 +28,7 @@ SoftEther VPN is one of the world's most powerful and easy-to-use multi-protocol
 %setup -q -n v%{majorversion}-%{minorversion}
 
 %build
-%ifarch i386
+%ifarch i386 i686
 cp $RPM_SOURCE_DIR/linux_32bit.mak Makefile
 %else
 cp $RPM_SOURCE_DIR/linux_64bit.mak Makefile
