@@ -5,7 +5,17 @@ Original project sources at: https://github.com/SoftEtherVPN/SoftEtherVPN/
 I am unaffiliated with them. Any bugs in SoftEtherVPN should be reported there. Any bugs in my
 spec file for building the RPM should probably be reported here.
 
-## Notes
+## Install and run
+
+If you just want to quickly install SoftEther VPN, I've uploaded RPMs on http://projects.thepoch.com/softether/ . Install the appropriate RPM. Then you can start the service as root:
+
+    service vpnserver start
+
+You can also have it start automatically:
+
+    chkconfig vpnserver on
+
+## Files
 
 This project containts the following files to build an RPM of SoftEther VPN:
 
@@ -19,21 +29,21 @@ This project containts the following files to build an RPM of SoftEther VPN:
 
 As root, install the following packages:
 
-  yum -y groupinstall "Development Tools"
-  yum -y install ncurses-devel openssl-devel readline-devel
-  yum -y install rpmdevtools
+    yum -y groupinstall "Development Tools"
+    yum -y install ncurses-devel openssl-devel readline-devel
+    yum -y install rpmdevtools
 
 As a regular user, create your rpmbuild directory structure:
 
-  rpmdev-setuptree
+    rpmdev-setuptree
 
 Copy over the files from their respective directories in this repository into your rpmbuild directory. Then
 
-  rpmbuild -ba SPECS/softethervpn.spec
+    rpmbuild -ba SPECS/softethervpn.spec
 
 The resulting RPM will be in the RPM directory. Install this as root:
 
-  rpm -Uvh RPMS/`arch`/softethervpn-4*rpm
+    rpm -Uvh RPMS/`arch`/softethervpn-4*rpm
 
 ## Personal Notes
 
