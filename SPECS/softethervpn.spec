@@ -4,7 +4,7 @@
 
 Name:           softethervpn
 Version:        %{majorversion}.%{minorversion}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        An Open-Source Free Cross-platform Multi-protocol VPN Program
 
 Group:          Applications/Internet
@@ -85,6 +85,10 @@ if [ $1 -eq 0 ]; then
 fi
 
 %changelog
+* Wed Jan 29 2014 Dexter Ang <thepoch@gmail.com> - 4.04.9412-2
+- Made initscript more Fedora/RH-like.
+- initscript currently using killall. Need to fix this.
+
 * Tue Jan 21 2014 Dexter Ang <thepoch@gmail.com>
 - Initial release
 
