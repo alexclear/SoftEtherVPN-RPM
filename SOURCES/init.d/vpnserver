@@ -40,7 +40,8 @@ start() {
 
 stop() {
 	echo -n $"Stopping $prog: "
-	$exec stop
+#	$exec stop
+	/usr/bin/killall $prog
 	retval=$?
 	echo
 	[ $retval -eq 0 ] && rm -f $lockfile
