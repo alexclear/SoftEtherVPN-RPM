@@ -16,6 +16,11 @@ BuildRequires:  ncurses-devel
 BuildRequires:	openssl-devel
 BuildRequires:	readline-devel
 
+Requires(post):		chkconfig
+Requires(postun):	initscripts
+Requires(preun):	chkconfig
+Requires(preun):	initscripts
+
 %description
 SoftEther VPN is one of the world's most powerful and easy-to-use multi-protocol VPN software. It runs on Windows, Linux, Mac, FreeBSD, and Solaris.
 
@@ -62,11 +67,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_usr}/vpnbridge/
 %{_usr}/vpnclient/
 %{_usr}/vpncmd/
-/etc/rc.d/init.d/vpnserver
+%{_initddir}/vpnserver
 %doc AUTHORS.TXT BUILD_UNIX.TXT BUILD_WINDOWS.TXT ChangeLog ChangeLog.txt LICENSE LICENSE.TXT README README.TXT THIRD_PARTY.TXT WARNING.TXT
 
 %post
 /sbin/chkconfig --add vpnserver
+
+#%postun
+#if [ "$1" -ge "1" ]; then
+#	/sbin/service vpnserver condrestart >/dev/null 2>&1 || :
+#fi
+
+%preun
+if [ $1 -eq 0 ]; then
+	/sbin/service vpnserver stop >/dev/null 2>&1
+	/sbin/chkconfig --del vpnserver
+fi
 
 %changelog
 * Tue Jan 21 2014 Dexter Ang <thepoch@gmail.com>
