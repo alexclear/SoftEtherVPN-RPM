@@ -1,13 +1,10 @@
-# SoftEtherVPN-RPM
+The files here are for building an RPM package installable on CentOS 6.x/RHEL 6.x.
 
-Original project sources at: https://github.com/SoftEtherVPN/SoftEtherVPN/
-
-I am unaffiliated with them. Any bugs in SoftEtherVPN should be reported there. Any bugs in my
-spec file for building the RPM should probably be reported here.
+I (Dexter Ang, aka @thepoch) am not affiliated with the SoftEther VPN Project. Any bugs, suggestions, improvements on building an RPM should probably be reported to me.
 
 ## Install and run
 
-If you just want to quickly install SoftEther VPN, I've uploaded RPMs on http://projects.thepoch.com/softether/ . Install the appropriate RPM. Then you can start the service as root:
+After the package is built and installed, you can start the service as root:
 
     service vpnserver start
 
@@ -45,14 +42,15 @@ The resulting RPM will be in the RPM directory. Install this as root:
 
     rpm -Uvh RPMS/`arch`/softethervpn-4*rpm
 
+## Known Issues
+
+1. Currently, vpnserver hangs when stopped on CentOS 6.5. Have not had time to debug. Ticket #18 on SoftEtherVPN [https://github.com/SoftEtherVPN/SoftEtherVPN/issues/18](https://github.com/SoftEtherVPN/SoftEtherVPN/issues/18).
+2. Directory structure retained as-is under /usr/vpn*.
+3. Not built into separate packages (ie vpnserver, vpnclient, etc. are all in one).
+4. When uninstalling, if you ran any of the SoftEtherVPN binaries, configuration and other files are generated in /usr/vpn*. So these directories will remain when you uninstall the RPM. You can delete these if you don't plan on using the configurations again.
+
 ## Personal Notes
 
 1. This is my first time creating a spec file, creating an RPM, etc. Apologies in advance for any mistakes.
 2. This was tested using sources for version: **4.04.9412**. I'll try and update this as new versions come out.
-3. Directory structures from source were retained. I may clean this up in the future given suggestions/feedback, and my gaining experience in creating an RPM.
-4. When uninstalling, if you ran any of the SoftEtherVPN binaries, configuration and other files are generated in /usr/vpn*. So these directories will remain when you uninstall the RPM. You can delete these if you don't plan on using the configurations again.
-
-Thanks,
-
-Dex (@thepoch on Twitter)
 
