@@ -1,10 +1,10 @@
-%define majorversion 4.04
-%define minorversion 9412
-%define dateversion 2014.01.15
+%define majorversion 4.08
+%define minorversion 9449
+%define dateversion 2014.06.08
 
 Name:           softethervpn
 Version:        %{majorversion}.%{minorversion}
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        An Open-Source Free Cross-platform Multi-protocol VPN Program
 
 Group:          Applications/Internet
@@ -85,6 +85,9 @@ if [ $1 -eq 0 ]; then
 fi
 
 %changelog
+* Tue Jul 15 2014 Dexter Ang <thepoch@gmail.com> - 4.08.9449-1
+- Updated to latest rtm.
+
 * Wed Jan 29 2014 Dexter Ang <thepoch@gmail.com> - 4.04.9412-2
 - Made initscript more Fedora/RH-like.
 - initscript currently using killall. Need to fix this.
