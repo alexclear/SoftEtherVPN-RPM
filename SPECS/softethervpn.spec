@@ -1,6 +1,7 @@
-%define majorversion 4.08
-%define minorversion 9449
-%define dateversion 2014.06.08
+%define majorversion 4.12
+%define minorversion 9514
+%define dateversion 2014.12.26
+%define versionsuffix beta
 
 Name:           softethervpn
 Version:        %{majorversion}.%{minorversion}
@@ -10,7 +11,7 @@ Summary:        An Open-Source Free Cross-platform Multi-protocol VPN Program
 Group:          Applications/Internet
 License:        GPLv2
 URL:            http://www.softether.org/
-Source0:        http://www.softether-download.com/files/softether/v%{majorversion}-%{minorversion}-rtm-%{dateversion}-tree/Source%20Code/softether-src-v%{majorversion}-%{minorversion}-rtm.tar.gz
+Source0:        http://www.softether-download.com/files/softether/v%{majorversion}-%{minorversion}-rtm-%{dateversion}-tree/Source%20Code/softether-src-v%{majorversion}-%{minorversion}-%{versionsuffix}.tar.gz
 
 BuildRequires:  ncurses-devel
 BuildRequires:	openssl-devel
@@ -85,6 +86,9 @@ if [ $1 -eq 0 ]; then
 fi
 
 %changelog
+* Fri Dec 26 2014 Alex Chistyakov <alexclear@gmail.com> - 4.12.9514-1
+- Updated to latest beta.
+
 * Tue Jul 15 2014 Dexter Ang <thepoch@gmail.com> - 4.08.9449-1
 - Updated to latest rtm.
 
